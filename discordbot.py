@@ -10,7 +10,8 @@ TOKEN = os.environ["TOKEN"]
 INITIAL_EXTENSIONS = [
     "cogs.help",
     "cogs.archive",
-    "cogs.tf"
+    "cogs.tf",
+    "cogs.back"
 ]
 
 class yukari(commands.Bot):

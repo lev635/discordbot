@@ -6,7 +6,9 @@ from discord import app_commands
 from discord.ext import commands
 
 load_dotenv()
-ID_MY_SERVER = os.environ["MY_SERVER"]
+
+ARCHIVE_EMOJI = os.environ['ARCHIVE_EMOJI']
+ARCHIVE_CRITERION = int(os.environ['ARCHIVE_CRITERION'])
 
 class Help(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -22,9 +24,18 @@ class Help(commands.Cog):
     ):
 
         await interaction.response.defer()
-        with open("./help.md", "r", encoding="utf-8") as file:
-            message = file.read()
+        message = """## コマンド
+- `/help` : これを表示
+- `/tf (絵文字の名前)` : 絵文字をファイルにして送信
+- `/archive (メッセージのURL)` : 指定されたメッセージを保存
+## 機能
+- メッセージのリンクを貼ると、内容を展開します
+- `:{ARCHIVE_EMOJI}:` が {ARCHIVE_CRITERION} 個以上ついたメッセージを保存します
+""".format(
+            ARCHIVE_EMOJI=ARCHIVE_EMOJI,
+            ARCHIVE_CRITERION=ARCHIVE_CRITERION
+        )
         await interaction.followup.send(message)
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Help(bot),guilds = [discord.Object(id=ID_MY_SERVER)])
+    await bot.add_cog(Help(bot))

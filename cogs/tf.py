@@ -7,8 +7,6 @@ from discord.ext import commands
 
 load_dotenv()
 
-ID_MY_SERVER = os.environ["MY_SERVER"]
-
 class Tf(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -34,4 +32,4 @@ class Tf(commands.Cog):
         await interaction.followup.send("not found", ephemeral=True)
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Tf(bot),guilds = [discord.Object(id=ID_MY_SERVER)])
+    await bot.add_cog(Tf(bot))

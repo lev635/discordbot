@@ -11,8 +11,6 @@ load_dotenv()
 
 TOKEN = os.environ["TOKEN"]
 
-ID_MY_SERVER = int(os.environ['MY_SERVER'])
-
 ARCHIVE_CHANNEL = int(os.environ['ARCHIVE_CHANNEL'])
 
 TEMP_CHANNEL = int(os.environ['TEMP_CHANNEL'])
@@ -58,7 +56,7 @@ class Archive(commands.Cog):
         await interaction.followup.send("完了", ephemeral=True)
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Archive(bot),guilds = [discord.Object(id=ID_MY_SERVER)])
+    await bot.add_cog(Archive(bot))
 
 async def make_embed(bot, message, color_code):
     embed = discord.Embed(

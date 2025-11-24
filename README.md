@@ -1,8 +1,16 @@
 # discordbot
 ## 機能
 - メッセージのリンクを貼ると内容を展開します。
+
+  ![alt text](assets/expand.png)
+
 - メッセージに一定以上のリアクションがついた場合、特定のチャンネルに再投稿します。
+
+  ![alt text](assets/archive.png)
+
 - 絵文字を画像化します。
+
+  ![alt text](assets/tf.png)
 
 ## コマンド
 | コマンド | 説明 |

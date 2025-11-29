@@ -16,19 +16,17 @@ INITIAL_EXTENSIONS = [
 
 class yukari(commands.Bot):
     def __init__(self):
+        intents = discord.Intents.default()
+        intents.message_content = True
+        intents.members = True
         super().__init__(
             command_prefix="/",
-            intents=discord.Intents.all(),
+            intents=intents,
         )
 
     async def setup_hook(self):
         for cog in INITIAL_EXTENSIONS:
             await self.load_extension(cog)
         await self.tree.sync()
-
-    async def on_ready(self):
-        await self.change_presence(
-            status=discord.Status.idle
-        )
 
 yukari().run(TOKEN)
